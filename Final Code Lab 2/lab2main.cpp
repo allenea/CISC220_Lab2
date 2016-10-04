@@ -4,13 +4,13 @@
 
  *
  *  Created on: Oct 3, 2016
- *      Author: ericallen
+ *      Author: Eric Allen, John Pae.  Leighanne Hsu. Lab 2.
  */
 
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#include "lab2lottery.cpp" //not needed but I get redlines under cout and endl otherwise....
+using namespace std;
 #include "lab2lottery.hpp"
 
 
@@ -23,7 +23,7 @@ int main() {
 		cout << winners[i] << endl;
 	}
 	findWinners(me, winners);
-	cout<<"Won with 1 number: "<<me-> total_winners[0]<< endl;
+	cout<<"Won with 1 number: "<<me->total_winners[0]<< endl;
 	cout<<"Won with 2 numbers: "<< me->total_winners[1]<< endl;
 	cout<< "Won with 3 numbers: "<<me->total_winners[3]<< endl;
 

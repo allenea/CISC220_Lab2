@@ -2,23 +2,22 @@
  * lab2lottery.hpp
  *
  *  Created on: Sep 21, 2016
- *      Author: john
+ *      Author: Eric Allen, John Pae.  Leighanne Hsu. Lab 2.
  */
 
 #ifndef LAB2LOTTERY_HPP_
 #define LAB2LOTTERY_HPP_
 
 struct Customer{
-
-
-
 	//simplified list of attributes
-	int customerID, number_of_tickets, **lottery_nums;// 3D array
+	int customerID, number_of_tickets;
+	int **lottery_nums;// 3D array
 };
 
 struct Store{
 	//simplified list of attributes
-	int storeID, numcust, numsold,**customer_list, numwinners[3];
+	int storeID, numcust, numsold, numwinners[3];
+	Customer *customer_list;
 };
 
 
