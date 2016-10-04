@@ -82,21 +82,17 @@ Customer makeCustomer(){
 	return newCustomer;
 }
 
-// DOESNT WORK.. REWRITE... JUST MESSING AROUND
-void getWinners(int zArray[3])
-{
-	zArray[0] = 0;
-	zArray[1] = 0;
-	zArray[2] = 0;
-
-	srand(time(NULL));
-	int n1 = (0 + rand() % (9 -0));
-	int n2 = (0 + rand() % (9 -0));
-	int n3 = (0 + rand() % (9 -0));
-
-	zArray[0] = n1;
-	zArray[1] = n2;
-	zArray[2] = n3;
+void getWinners(int win[]){
+ 	int first_win, second_win, third_win;
+ 	do{
+ 		first_win = rand()%10;
+		second_win = rand()%10;
+		third_win = rand()%10;
+	}
+ 	while(second_win == first_win || third_win == first_win || third_win == second_win);
+ 	win[0]= first_win;
+ 	win[1]= second_win;
+ 	win[2] = third_win;
 }
 
 
@@ -126,6 +122,7 @@ void findWinners(Owner *me, int *win){
 		for (int j = 0; j == currStore.numcust; j++){
 			Customer currCust = currStore.customer_list[j];
 			cout<<"\t"<<"\t"<<"Customer: " <<currCust.customerID<<endl;
+			//for loop
 
 		}
 	}
