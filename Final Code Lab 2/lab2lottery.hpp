@@ -10,7 +10,8 @@
 
 struct Customer{
 	//simplified list of attributes
-	int customerID, number_of_tickets;
+	int customerID;
+	int number_of_tickets;
 	int **lottery_nums;// 3D array
 };
 

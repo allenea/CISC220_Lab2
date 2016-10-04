@@ -13,7 +13,6 @@ using namespace std;
 
 //FUNCTION DEFINITIONS
 Owner *makeOwner(){
-	srand(time(NULL));
 	//stores the owner owns.. between 1-10
 	int stores_owned = (rand()%10)+1;
 	Store stores[stores_owned];
@@ -28,12 +27,12 @@ Owner *makeOwner(){
 		newOwner->stores[i] = makeStore();
 		// Sums total number of tixs sold from all owners of all the stores
 		newOwner->total_sold = newOwner->total_sold + newOwner->stores[i].numsold;
+
 	}
 	return newOwner;
 }
 
 Store makeStore(){
-	srand(time(NULL));
 	//makes a store
 	Store newStore;
 	//gives store id number randomly assigned between 1 and 100
@@ -67,7 +66,7 @@ Customer makeCustomer(){
 		int N2 = rand()&10;
 		int N3 = rand()&10;
 		//checks to make sure lottery numbers arent the same
-		while((N1==N2)||(N1==N3)|| (N2==N3)){
+		while((N1==N2)  || (N1==N3) || (N2==N3)){
 			//Permanently assigns lotto number
 			N1 = rand()&10;
 			N2 = rand()&10;
@@ -83,14 +82,17 @@ Customer makeCustomer(){
 }
 
 void getWinners(int win[]){
+	// initialize variables
  	int first_win, second_win, third_win;
  	do{
+ 		//randomize
  		first_win = rand()%10;
 		second_win = rand()%10;
 		third_win = rand()%10;
 	}
  	//while they aren't the same
  	while(second_win == first_win || third_win == first_win || third_win == second_win);
+ 	//assignment
  	win[0]= first_win;
  	win[1]= second_win;
  	win[2] = third_win;
@@ -117,17 +119,21 @@ int checkwin(int *test, int *win){
 void findWinners(Owner *owner, int *win){
 	cout<<"Total Lottery Tickets Sold:   "<<owner->total_sold<<endl;
 	cout<<"Winning Lottery Numbers Are:  "<<win[0]<<","<<win[1]<<","<<win[2]<<endl;
-	for (int i = 0; i < owner->numstores; i++) {
+	for (int i = 0; i == owner->numstores; i++) {
 		Store currStore = owner->stores[i];
 		cout<<"\t"<< "store:  "<<currStore.storeID <<endl;
-		for (int j = 0; j < owner->total_sold; j++){
+		for (int j = 0; j == currStore.numcust; j++){
 			Customer currCust = currStore.customer_list[j];
-			cout<<"\t"<<"\t"<<"Customer: " <<currCust.customerID<<endl;\
-			for (int k = 0; k < owner->total_winners ; k++){
-				cout<<"\t"<<"\t"<<"Ticket: " <<currCust.customerID<<endl;\
-
+			cout<<"\t"<<"\t"<<"Customer: " <<currCust.customerID<<endl;
+			for (int k = 0; k == owner->stores->numsold ; k++){
+				cout<<"Ticket:" <<currCust.lottery_nums[k][0]<<","<<currCust.lottery_nums[k][1]<<currCust.lottery_nums[k][2]<<
+						"Matched:  "<< checkwin(currCust.lottery_nums[k],win)<<endl;
+				//cout<<"\t"<<"\t"<<"Ticket: " <<currCust.number_of_tickets << "\t"<<"Matched:   " <<endl;
+				//cout<<"Total Count For Store:  "<< currStore.numsold<<endl;
 			}
 			//for loop
+			//newOwner->total_sold = newOwner->total_sold + newOwner->stores[i].numsold;
+			//newStore.numsold = newStore.numsold + newCustomer.number_of_tickets;
 
 		}
 	}
