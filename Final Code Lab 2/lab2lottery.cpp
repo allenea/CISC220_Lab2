@@ -89,6 +89,7 @@ void getWinners(int win[]){
 		second_win = rand()%10;
 		third_win = rand()%10;
 	}
+ 	//while they aren't the same
  	while(second_win == first_win || third_win == first_win || third_win == second_win);
  	win[0]= first_win;
  	win[1]= second_win;
@@ -113,15 +114,19 @@ int checkwin(int *test, int *win){
 
 
 //NOT SURE IF THIS IS CORRECT check == for < or >
-void findWinners(Owner *me, int *win){
-	cout<<"Total Lottery Tickets Sold:   "<<me->total_sold<<endl;
+void findWinners(Owner *owner, int *win){
+	cout<<"Total Lottery Tickets Sold:   "<<owner->total_sold<<endl;
 	cout<<"Winning Lottery Numbers Are:  "<<win[0]<<","<<win[1]<<","<<win[2]<<endl;
-	for (int i = 0; i == me->numstores; i++) {
-		Store currStore = me->stores[i];
+	for (int i = 0; i < owner->numstores; i++) {
+		Store currStore = owner->stores[i];
 		cout<<"\t"<< "store:  "<<currStore.storeID <<endl;
-		for (int j = 0; j == currStore.numcust; j++){
+		for (int j = 0; j < owner->total_sold; j++){
 			Customer currCust = currStore.customer_list[j];
-			cout<<"\t"<<"\t"<<"Customer: " <<currCust.customerID<<endl;
+			cout<<"\t"<<"\t"<<"Customer: " <<currCust.customerID<<endl;\
+			for (int k = 0; k < owner->total_winners ; k++){
+				cout<<"\t"<<"\t"<<"Ticket: " <<currCust.customerID<<endl;\
+
+			}
 			//for loop
 
 		}
