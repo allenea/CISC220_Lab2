@@ -16,9 +16,12 @@ Owner *makeOwner() {
 	newOwner = new Owner;
 	//stores the owner owns.. between 1-10
 	newOwner->total_sold = 0;
+	newOwner->total_winners[0] = 0;
+	newOwner->total_winners[1] = 0;
+	newOwner->total_winners[2] = 0;
 	newOwner->numstores = (rand() % 10) + 1;
 	newOwner->storeL = new Store[newOwner->numstores];
-	//cout << "Stores Owned:" << newOwner->numstores << endl;
+	cout << "Stores Owned:" << newOwner->numstores << endl;
 
 	// points to an owner
 	// makes new owner
@@ -45,7 +48,7 @@ Store makeStore() {
 
 	// randomly picks how many customers that store will have, between 1-10 customers
 	newStore.numcust = (rand() % 10) + 1;
-	//cout << "Number of Customers:  " << newStore.numcust << endl; //COMMENT OUT
+	cout << "Number of Customers:  " << newStore.numcust << endl; //COMMENT OUT
 	//set to 0 to initialize
 	newStore.numsold = 0;
 	newStore.customer_list = new Customer[newStore.numcust];
@@ -127,9 +130,7 @@ int checkwin(int arr1[2], int arr2[2]) {
 }
 
 void findWinners(Owner *owner, int *win) {
-	owner->total_winners[0] = 0;
-	owner->total_winners[1] = 0;
-	owner->total_winners[2] = 0;
+
 	cout << "Total Lottery Tickets Sold:   " << owner->total_sold << endl;
 	cout << "Winning Lottery Numbers Are:  " << win[0] << "," << win[1] << ","<< win[2] <<endl;
 	for (int i = 0; i < owner->numstores; i++) {
