@@ -19,7 +19,7 @@ Owner *makeOwner(){
 	newOwner->total_sold = 0;
 	newOwner->numstores = (rand()%10) +1;
 	newOwner->storeL = new Store [newOwner->numstores];
-	cout<<"Stores Owned:"<<newOwner->numstores<<endl;
+	//cout<<"Stores Owned:"<<newOwner->numstores<<endl;
 
 	// points to an owner
 	// makes new owner
@@ -43,7 +43,7 @@ Store makeStore(){
 	Store newStore;
 	//gives store id number randomly assigned between 1 and 100
 	newStore.storeID  = (rand()%100)+1;
-	cout<<"StoreID:  "<<newStore.storeID<<endl; //COMMENT OUT
+	//cout<<"StoreID:  "<<newStore.storeID<<endl; //COMMENT OUT
 
 	// randomly picks how many customers that store will have, between 1-10 customers
 	newStore.numcust = (rand()%10)+1;
@@ -128,7 +128,22 @@ int checkwin(int *test, int *win){
 	return wins;
 }
 
-
+void findWinners(Owner *owner, int *win){
+ 	cout<<"Total Lottery Tickets Sold:   "<<owner->total_sold<<endl;
+ 	cout<<"Winning Lottery Numbers Are:  "<<win[0]<<","<<win[1]<<","<<win[2]<<endl;
+	for (int i = 0; i < owner->numstores; i++) {
+		Store currStore = owner->storeL[i];
+		cout<< "\t"<<"store:  "<<currStore.storeID <<endl;
+		for (int j = 0; j < currStore.numcust; j++) {
+			Customer currCust = currStore.customer_list[j];
+			cout<<"\t"<<"\t"<<"Customer"<<currCust.customerID <<endl;
+			for (int k = 0; k < currStore.numsold ; k++){
+				cout<<"\t"<<"\t"<<"\t"<<"Ticket:" <<currCust.lottery_nums[k][0]<<","<<currCust.lottery_nums[k][1]<<currCust.lottery_nums[k][2]<<"\t"<<"Matched:  "<< checkwin(currCust.lottery_nums[k],win)<<endl;
+			}
+		}
+	}
+}
+/*
 //NOT SURE IF THIS IS CORRECT check == for < or >
 void findWinners(Owner *owner, int *win){
 	cout<<"Total Lottery Tickets Sold:   "<<owner->total_sold<<endl;
@@ -147,3 +162,4 @@ void findWinners(Owner *owner, int *win){
 		}
 	}
 }
+*/
