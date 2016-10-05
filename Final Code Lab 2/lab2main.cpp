@@ -14,7 +14,7 @@ using namespace std;
 #include "lab2lottery.hpp"
 
 int main() {
-	srand(time(NULL));
+	srand((int)time(NULL));
 	Owner *me= makeOwner();
 	int winners[3] = {0,0,0};
 	getWinners (winners);
@@ -22,7 +22,7 @@ int main() {
 		cout << winners[i] << endl;
 	}
 	findWinners(me, winners);
-	cout << "won with 1 number: "<< me->total_winners[0] << endl;
+	cout << "Won with 1 number : " << me->total_winners[0] << endl;
 	cout << "won with 2 numbers: " << me->total_winners[1] << endl;
 	cout << "won with 3 numbers: " << me->total_winners[2] << endl;
 	//cout << x << endl;

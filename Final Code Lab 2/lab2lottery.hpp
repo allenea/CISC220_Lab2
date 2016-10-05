@@ -13,13 +13,13 @@ struct Customer{
 	int customerID;
 	int number_of_tickets;
 	int **lottery_nums;// 3D array
-};
+};//customer
 
 struct Store{
 	//simplified list of attributes
 	int storeID, numcust, numsold, numwinners[3];
 	Customer *customer_list;
-};
+};//store
 
 
 struct Owner{
@@ -27,7 +27,7 @@ struct Owner{
 	int numstores, total_winners[3];
 	int total_sold;
 	Store *storeL;
-};
+};//owner
 
 //FUNCTION DECLARATIONS
 Owner *makeOwner();
