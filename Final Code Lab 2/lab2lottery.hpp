@@ -24,8 +24,9 @@ struct Store{
 
 struct Owner{
 	//simplified list of attributes
-	int numstores, total_sold, total_winners[3];
-	Store *stores;
+	int numstores, total_winners[3];
+	int total_sold;
+	Store *storeL;
 };
 
 //FUNCTION DECLARATIONS
